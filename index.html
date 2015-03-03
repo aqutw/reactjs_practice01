@@ -71,15 +71,16 @@ var CommentBox = React.createClass({
   },
 
   loadCommentsFromServer: function() {
+    var me=this;
     $.ajax({
       url: this.props.url,
       dataType: 'json',
       success: function(data) {
-        this.setState({data: data});// The key to dynamic updates is the call to this.setState(). 
-      }.bind(this),
+        me.setState({data: data});// The key to dynamic updates is the call to this.setState(). 
+      },
       error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
+        console.error(me.props.url, status, err.toString());
+      }
     });
   },
 
